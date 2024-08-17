@@ -9,6 +9,7 @@ import AllExpenses from "../screens/AllExpenses";
 import { GlobalStyles } from "@/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import IconButton from '../components/UI/IconButton';
+import ExpensesContextProvider from '../store/expenses-context';
 
 const Stack = createNativeStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -51,6 +52,7 @@ export default function Index() {
   return (
     <>
       <StatusBar style="auto"/>
+      <ExpensesContextProvider>
       <NavigationContainer independent={true}>
         <Stack.Navigator initialRouteName="ExpensesOverview" screenOptions={{
           headerStyle:{
@@ -64,6 +66,7 @@ export default function Index() {
           }}/>
         </Stack.Navigator>
       </NavigationContainer>
+      </ExpensesContextProvider>
     </>
   );
 }
