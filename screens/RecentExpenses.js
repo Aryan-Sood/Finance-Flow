@@ -10,7 +10,7 @@ export default function RecentExpenses() {
 
 
   const expensesCtx = useContext(ExpenseContext);
-  console.log('expensesCtx.expenses: ', expensesCtx.expenses);
+  // console.log('expensesCtx.expenses: ', expensesCtx.expenses);
 
   const recentExpenses = expensesCtx.expenses.filter((expense)=>{
     const today = new Date();
@@ -21,7 +21,7 @@ export default function RecentExpenses() {
 
   return (
     <View style={styles.container}>
-      <ExpensesOutput expenses={recentExpenses} expensesPeriod='Last 7 days' />
+      <ExpensesOutput expenses={recentExpenses} expensesPeriod='Last 7 days' fallBackText='No expenses registered in last 7 days'/>
     </View>
   )
 }

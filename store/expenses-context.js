@@ -115,6 +115,8 @@ function ExpenseContextProvider({children}){
     }
 
     function updateExpense(id, expenseData){
+        // console.log('id: ', id)
+        // console.log('expense Data next: ', expenseData)
         dispatch({type:'UPDATE', payload: {id:id, data: expenseData}});
     }
 

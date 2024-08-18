@@ -5,18 +5,38 @@ import { GlobalStyles } from "@/constants/Colors";
 
 
 
+function ExpensesOutput({expenses, expensesPeriod, fallBackText}){
 
+    let content = <Text style={styles.info}>{fallBackText}</Text>
 
-function ExpensesOutput({expenses, expensesPeriod}){
+    if (expenses.length > 0){
+        content = <ExpensesList expenses={expenses} />
+    }
     
     return (
         <View>
             <ExpensesSummary periodName={expensesPeriod} expenses={expenses} />
-            <ExpensesList expenses={expenses} />
+            {content}
         </View>
     );
     
 }
 
-export default ExpensesOutput
+export default ExpensesOutput;
 
+
+const styles = StyleSheet.create({
+    container:{
+        flex:1,
+        paddingHorizontal:24,
+        paddingTop:24,
+        paddingBottom:0,
+        backfaceVisibility:GlobalStyles.colors.primary700
+    },
+    info:{
+        color:'white',
+        fontSize:16,
+        textAlign:"center",
+        marginTop:32
+    }
+})

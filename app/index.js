@@ -51,7 +51,7 @@ function ExpensesOverview(){
 export default function Index() {
   return (
     <>
-      <StatusBar style="auto"/>
+      <StatusBar style="light"/>
       <ExpensesContextProvider>
       <NavigationContainer independent={true}>
         <Stack.Navigator initialRouteName="ExpensesOverview" screenOptions={{
