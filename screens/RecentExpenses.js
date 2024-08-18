@@ -10,6 +10,7 @@ export default function RecentExpenses() {
 
 
   const expensesCtx = useContext(ExpenseContext);
+  console.log('expensesCtx.expenses: ', expensesCtx.expenses);
 
   const recentExpenses = expensesCtx.expenses.filter((expense)=>{
     const today = new Date();

@@ -74,7 +74,7 @@ export const ExpenseContext = createContext({
     expenses:[],
     addExpense:({description, amount, date})=>{},
     deleteExpense:(id)=>{},
-    updateExpenseL:(id, {description, amount, date})=>{}
+    updateExpense:(id, {description, amount, date})=>{}
 });
 
 
@@ -84,12 +84,16 @@ function expensesReducer(state,action){
             const id = new Date().toString() + Math.random().toString();
             return [{...action.payload, id: id}, ...state]
         case 'UPDATE':
-            const updatableExpenseIndex = state.find((expense)=> expense.id === action.payload.id);
+            const updatableExpenseIndex = state.findIndex((expense)=> expense.id === action.payload.id);
+            // console.log('updating index: ', updatableExpenseIndex);
             const updatableExpenses = state[updatableExpenseIndex];
+            // console.log('state: ', state)
+            // console.log('updatableExpenses: ', updatableExpenses);
             const updatedItem = { ...updatableExpenses, ...action.payload.data};
             const updatedExpenses = [...state];
             updatedExpenses[updatableExpenseIndex] = updatedItem;
-            return updatableExpenses;
+            // console.log('updated expenses: ',updatedExpenses);
+            return updatedExpenses;
         case 'DELETE':
             return state.filter((expense)=> expense.id !==action.payload)
         default:
@@ -127,4 +131,4 @@ function ExpenseContextProvider({children}){
     );
 }
 
-export default  ExpenseContextProvider;
+export default ExpenseContextProvider;
